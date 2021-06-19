@@ -36,7 +36,7 @@ app.get('/photos-public', (req, res) => {
 });
 
 var server = app.listen(
-	8081,
+	process.env.PORT || 8081,
 	/*"127.0.0.1",*/ function () {
 		var host = server.address().address;
 		var port = server.address().port;
