@@ -20,7 +20,10 @@ app.get('/', function (req, res) {
 });
 
 app.get('/photos-public', (req, res) => {
-	fetch('https://api.flickr.com/services/feeds/photos_public.gne' + urlFormatJson)
+	const tags = req.query.tags;
+	const url = encodeURI('https://api.flickr.com/services/feeds/photos_public.gne' + urlFormatJson + '&tags=' + tags);
+
+	fetch(url)
 		.then(response => response.json())
 		.then(data => {
 			return res.send({ success: true, result: data });
